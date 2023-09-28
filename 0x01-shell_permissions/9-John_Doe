@@ -1,2 +1,4 @@
 #!/bin/bash
 chmod g+x hello
+chmod 731 hello
+
