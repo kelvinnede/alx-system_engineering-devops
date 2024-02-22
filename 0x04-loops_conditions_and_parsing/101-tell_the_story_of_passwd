@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script tells a story based on the content of the file /etc/passwd
+
+# Read each line of /etc/passwd
+while IFS=':' read -r username password userid groupid user_info home shell; do
+    # Check if the line is not empty
+    if [ -n "$username" ]; then
+        # Extract additional user information
+        info=$(getent passwd "$username" | cut -d ':' -f 5)
+
+        # Display the story
+        echo "The user $username is part of the $groupid gang, lives in $home and rides $shell. $userid's place is protected by the passcode $password, more info about the user here: $info"
+    fi
+done < /etc/passwd
