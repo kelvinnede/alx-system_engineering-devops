@@ -1,0 +1,8 @@
+# /etc/pam.d/common-session
+session required pam_limits.so
+<% include_original = false %>
+<% scope.lookupvar('original_content').each do |line| %>
+<% unless line.include?('session required pam_limits.so') %>
+<%= line %>
+<% end %>
+<% end %>
